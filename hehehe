@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Button Test</title>
+  <style>
+    .yes-button { font-size: 16px; }
+  </style>
+</head>
+<body>
+
+  <button class="yes-button" onclick="handleYesClick()">Yes</button>
+  <button class="no-button" onclick="handleNoClick()">No</button>
+
+  <script>
+    const messages = [
+      "Are you sure?",
+      "Really?",
+      "Think again 😏",
+      "Last chance!"
+    ];
+
+    let messageIndex = 0;
+
+    function handleNoClick() {
+      const noButton = document.querySelector('.no-button');
+      const yesButton = document.querySelector('.yes-button');
+
+      noButton.textContent = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      const currentSize = parseFloat(
+        window.getComputedStyle(yesButton).fontSize
+      );
+      yesButton.style.fontSize = `${currentSize * 1.5}px`;
+    }
+
+    function handleYesClick() {
+      window.location.href = "yes_page.html";
+    }
+  </script>
+
+</body>
+</html>
